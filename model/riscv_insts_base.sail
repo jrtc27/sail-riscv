@@ -330,7 +330,7 @@ function clause execute (RTYPE(rs2, rs1, rd, op)) = {
     RISCV_SUB  => rs1_val - rs2_val,
     RISCV_SRA  => if   sizeof(xlen) == 32
                   then shift_right_arith32(rs1_val, rs2_val[4..0])
-                  else shift_right_arith64(rs1_val, rs2_val[5..0])
+                  else shift_right_arith64(rs1_val, rs2_val[5..1] @ 0b0)
   };
   X(rd) = result;
   RETIRE_SUCCESS
